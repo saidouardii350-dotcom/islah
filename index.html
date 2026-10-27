@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sla7ha — Fix Your Phone. Find the Right Technician. | Morocco</title>
+  <meta name="description" content="Sla7ha helps you find trusted smartphone repair technicians in Morocco, understand common phone problems, and estimate repair prices in MAD. Search by phone model, problem, city and neighborhood.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sla7ha.pages.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sla7ha">
+  <meta property="og:title" content="Sla7ha — Fix Your Phone. Find the Right Technician.">
+  <meta property="og:description" content="Find smartphone repair services across Morocco, diagnose common problems, and estimate repair costs in dirhams.">
+  <meta property="og:url" content="https://sla7ha.pages.dev/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sla7ha — Fix Your Phone. Find the Right Technician.">
+  <meta name="twitter:description" content="Find smartphone repair services across Morocco, diagnose common problems, and estimate repair costs in dirhams.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Crect x='9' y='5' width='14' height='22' rx='3' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M13 22l3 3 5-6' stroke='%23fbbf24' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Sla7ha home">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0f766e"/>
+          <rect x="9" y="5" width="14" height="22" rx="3" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M13 22l3 3 5-6" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Sla7ha</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#problems">Problems</a>
+        <a href="#estimator">Prices</a>
+        <a href="#shops">Shops</a>
+        <a href="#for-shops">For Shops</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero-kicker">Smartphone repair, Morocco</p>
+        <h1>Fix Your Phone.<br>Find the Right Technician.</h1>
+        <p class="subtitle">Search your phone model, understand what is wrong, and get an honest price estimate in dirhams — before you visit a shop.</p>
+
+        <div class="search-wrap">
+          <label class="sr-only" for="model-search">Search your phone model</label>
+          <input type="search" id="model-search" placeholder="Search your phone — e.g. iPhone 11, Galaxy A55, Redmi Note 12" autocomplete="off">
+          <div id="search-suggestions" class="suggestions" hidden></div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#problems" class="btn btn-primary">Find a Repair</a>
+          <a href="#estimator" class="btn btn-outline">Estimate a Price</a>
+        </div>
+
+        <div class="trust-row">
+          <span>Free to use</span>
+          <span aria-hidden="true">•</span>
+          <span>No account needed</span>
+          <span aria-hidden="true">•</span>
+          <span>Prices in MAD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Step 1: Brand & model ===== -->
+    <section id="brands" class="section">
+      <div class="container">
+        <h2 class="section-title">1 — Choose your phone</h2>
+        <p class="section-sub">Pick a brand, then a model. Your selection is used for price estimates and shop matching.</p>
+
+        <div id="brand-grid" class="brand-grid" role="list"></div>
+
+        <div id="model-panel" class="model-panel" hidden>
+          <h3 id="model-panel-title">Choose a model</h3>
+          <div id="model-chips" class="chip-row"></div>
+          <p id="selected-model-label" class="selected-label" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Step 2: Problem selector ===== -->
+    <section id="problems" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">2 — What is the problem?</h2>
+        <p class="section-sub">Tap a problem to see common causes and basic troubleshooting. An online assessment is a starting point — it can never replace a professional diagnosis.</p>
+
+        <div id="problem-grid" class="problem-grid"></div>
+
+        <div id="problem-detail" class="detail-card" hidden></div>
+      </div>
+    </section>
+
+    <!-- ===== Step 3: Price estimator ===== -->
+    <section id="estimator" class="section">
+      <div class="container">
+        <h2 class="section-title">3 — Estimate the repair price</h2>
+        <p class="section-sub">Estimates are indicative ranges in Moroccan dirhams (MAD). Real prices depend on parts quality (original vs compatible), parts availability, and the technician. We never display invented prices as verified — when we have no reliable data, we say so.</p>
+
+        <div class="estimator-form">
+          <div class="field">
+            <label for="est-brand">Brand</label>
+            <select id="est-brand"><option value="">Select brand…</option></select>
+          </div>
+          <div class="field">
+            <label for="est-model">Model</label>
+            <select id="est-model" disabled><option value="">Select brand first…</option></select>
+          </div>
+          <div class="field">
+            <label for="est-problem">Repair type</label>
+            <select id="est-problem"><option value="">Select repair…</option></select>
+          </div>
+        </div>
+
+        <div id="est-result" class="price-card" hidden></div>
+        <p class="fine-print">Missing a price? Technicians and shop owners can <a href="#admin-link" id="admin-jump">add price data (demo admin)</a>. Final quotes always come from the technician after inspection.</p>
+      </div>
+    </section>
+
+    <!-- ===== Step 4: Shop directory ===== -->
+    <section id="shops" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4 — Find a repair shop</h2>
+        <p class="section-sub">Search by city and neighborhood, filter by brand and service. Listings are added by shop owners and are marked <strong>unverified</strong> until our team confirms them in person. We never invent shops, ratings, or phone numbers.</p>
+
+        <div class="shop-filters">
+          <div class="field">
+            <label for="shop-city">City</label>
+            <input type="text" id="shop-city" list="city-list" placeholder="e.g. Casablanca">
+            <datalist id="city-list"></datalist>
+          </div>
+          <div class="field">
+            <label for="shop-area">Neighborhood</label>
+            <input type="text" id="shop-area" placeholder="e.g. Maârif">
+          </div>
+          <div class="field">
+            <label for="shop-brand-filter">Brand serviced</label>
+            <select id="shop-brand-filter"><option value="">Any brand</option></select>
+          </div>
+          <div class="field">
+            <label for="shop-service-filter">Service</label>
+            <select id="shop-service-filter"><option value="">Any service</option></select>
+          </div>
+          <button id="shop-clear" class="btn btn-ghost" type="button">Clear</button>
+        </div>
+
+        <p id="shop-count" class="shop-count" aria-live="polite"></p>
+        <div id="shop-results"></div>
+
+        <details class="add-shop">
+          <summary>Add your repair shop — free listing</summary>
+          <form id="add-shop-form" novalidate>
+            <p class="fine-print">Your listing is stored on your device in this demo version and marked <em>unverified</em>. Once Sla7ha launches a backend, submissions will be reviewed before appearing for everyone.</p>
+            <div class="form-row">
+              <div class="field">
+                <label for="s-name">Shop name *</label>
+                <input type="text" id="s-name" required maxlength="60">
+              </div>
+              <div class="field">
+                <label for="s-city">City *</label>
+                <input type="text" id="s-city" list="city-list" required maxlength="40">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="s-area">Neighborhood *</label>
+                <input type="text" id="s-area" required maxlength="60">
+              </div>
+              <div class="field">
+                <label for="s-hours">Opening hours</label>
+                <input type="text" id="s-hours" placeholder="e.g. Mon–Sat 9:30–20:00" maxlength="60">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="s-phone">Phone (Moroccan number) *</label>
+                <input type="tel" id="s-phone" placeholder="06 12 34 56 78" required>
+              </div>
+              <div class="field">
+                <label for="s-whatsapp">WhatsApp (if different)</label>
+                <input type="tel" id="s-whatsapp" placeholder="06 12 34 56 78">
+              </div>
+            </div>
+            <fieldset class="check-grid">
+              <legend>Brands you service *</legend>
+              <div id="s-brands"></div>
+            </fieldset>
+            <fieldset class="check-grid">
+              <legend>Services you offer *</legend>
+              <div id="s-services"></div>
+            </fieldset>
+            <label class="consent">
+              <input type="checkbox" id="s-consent" required>
+              <span>I confirm this information is accurate and I am authorized to list this business.</span>
+            </label>
+            <div id="shop-form-msg" class="form-msg" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary">Submit listing</button>
+          </form>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== For shops / revenue roadmap ===== -->
+    <section id="for-shops" class="section">
+      <div class="container">
+        <h2 class="section-title">For repair shop owners</h2>
+        <p class="section-sub">List your shop for free and be found by customers searching your city. As Sla7ha grows, paid options will fund the platform — introduced honestly, never with fake badges or invented reviews.</p>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Free listing — live now</h3>
+            <p>Name, neighborhood, phone, WhatsApp button, brands and services. Marked unverified until we confirm your shop in person.</p>
+          </article>
+          <article class="info-card">
+            <h3>Verified badge — coming</h3>
+            <p>After an in-person check of address, services, and contact details. Verified status will never be sold without the check.</p>
+          </article>
+          <article class="info-card">
+            <h3>Premium &amp; featured — planned</h3>
+            <p>Paid placements and featured spots at the top of search results, clearly labeled as sponsored. No fake reviews, ever.</p>
+          </article>
+          <article class="info-card">
+            <h3>Referral partnerships — planned</h3>
+            <p>Shops can agree to pay a small commission per customer Sla7ha sends. Tracking requires the backend and will be transparent to both sides.</p>
+          </article>
+          <article class="info-card">
+            <h3>Advertising — later</h3>
+            <p>Relevant ads (parts suppliers, accessories) only after the platform has real traffic — advertised reach will be based on real numbers.</p>
+          </article>
+          <article class="info-card">
+            <h3>Nothing fake, ever</h3>
+            <p>No invented ratings, no fabricated phone numbers, no pretend payments. Revenue features ship only when the backend and legal setup exist.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Admin demo ===== -->
+    <section id="admin" class="section section-admin" hidden>
+      <div class="container">
+        <h2 class="section-title">Admin — price data (demo)</h2>
+        <p class="section-sub"><strong>Local demo only.</strong> Changes are stored in this browser via localStorage and never leave the device. A real multi-device admin system with authentication requires the backend described in the README — never put admin passwords in frontend code.</p>
+        <div class="admin-form">
+          <div class="field">
+            <label for="adm-brand">Brand</label>
+            <select id="adm-brand"><option value="">Select…</option></select>
+          </div>
+          <div class="field">
+            <label for="adm-model">Model</label>
+            <select id="adm-model" disabled><option value="">Select brand…</option></select>
+          </div>
+          <div class="field">
+            <label for="adm-problem">Repair type</label>
+            <select id="adm-problem"><option value="">Select…</option></select>
+          </div>
+          <div class="field field-small">
+            <label for="adm-min">Min (MAD)</label>
+            <input type="number" id="adm-min" min="0" step="10" placeholder="0">
+          </div>
+          <div class="field field-small">
+            <label for="adm-max">Max (MAD)</label>
+            <input type="number" id="adm-max" min="0" step="10" placeholder="0">
+          </div>
+          <button id="adm-save" class="btn btn-primary" type="button">Save price</button>
+        </div>
+        <div id="adm-msg" class="form-msg" aria-live="polite"></div>
+        <h3 class="admin-sub">Prices on this device</h3>
+        <div id="adm-list"></div>
+        <button id="adm-reset" class="btn btn-ghost" type="button">Reset all demo data</button>
+      </div>
+    </section>
+
+    <!-- ===== About / legal ===== -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">About Sla7ha</h2>
+        <p class="section-sub">"Sla7ha" means "fix it" in Moroccan Darija. Sla7ha is an independent platform built to make phone repair in Morocco more transparent: clear problem descriptions, honest price expectations, and real shops you can contact directly. This first version runs entirely in your browser — no accounts, no tracking, no data uploaded.</p>
+        <div class="legal-grid">
+          <article class="info-card" id="contact">
+            <h3>Contact</h3>
+            <p>Questions, corrections, or shop verification requests: <a href="mailto:hello@sla7ha.pages.dev">hello@sla7ha.pages.dev</a> or WhatsApp <a href="https://wa.me/212600000000" rel="noopener">+212 6 00 00 00 00</a> (placeholder — replace before launch).</p>
+          </article>
+          <article class="info-card" id="privacy">
+            <h3>Privacy</h3>
+            <p>This version stores any data you enter (shop listings, price edits) only on your own device via localStorage. Nothing is transmitted to a server. When accounts and a backend launch, this policy will be updated before any data collection begins.</p>
+          </article>
+          <article class="info-card" id="terms">
+            <h3>Terms &amp; medical-style disclaimer</h3>
+            <p>Problem guides and price ranges are informational only and may not match your situation. Diagnosis and quotes must come from a qualified technician. Use of the site is at your own risk; Sla7ha is not a party to any repair agreement between you and a shop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Sla7ha — Fix Your Phone. Find the Right Technician.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#admin" id="admin-link">Admin (demo)</a>
+      </nav>
+      <p class="footer-fine">© <span id="year"></span> Sla7ha, Morocco. Estimates are indicative — always confirm with a technician.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
